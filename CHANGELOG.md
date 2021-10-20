@@ -5,8 +5,14 @@
 * Only use `hpack` when building if no cabal file is found
   for the package to process
   (See [#508](https://github.com/NixOS/cabal2nix/pull/508))
-* Support `aarch64-darwin` as an unsupported platform in
-  `hackage2nix` (See [#517](https://github.com/NixOS/cabal2nix/pull/517))
+* `hackage2nix` now supports arbitrary Nix-style platform tuples
+  in `unsupported-platforms` (including the new `aarch64-darwin`) as
+  well as nixpkgs platform groups which are detoned as e. g.
+  `platforms.darwin` and can be used instead of platform tuples.
+* `hackage2nix`'s `--platform` flag is now parsed in the same way
+  as `supported-systems` and `unsupported-systems` entries in
+  its configuration file. Specifically, a nixpkgs style
+  system tuple is expected.
 * `cabal2nix` will no longer emit a dependency on `webkitgtk24x-gtk{2,3}`
   if it detects the older 3.0 API of WebKit being used. Nixpkgs hasn't
   contained this package for a few years now due to security
